@@ -16,12 +16,16 @@ ENV DISPLAY :9.0
 RUN wget -O /fuck-xuexiqiangguo.zip https://github.com/fuck-xuexiqiangguo/Fuck-XueXiQiangGuo/raw/master/Fuck学习强国-linux.zip && \
     unzip -q -d /app/ fuck-xuexiqiangguo.zip && \
     rm /fuck-xuexiqiangguo.zip && \
-    chmod +x /app/Fuck学习强国
+    mv /app/Fuck学习强国 /app/autoxxqg && \
+    chmod +x autoxxqg
 
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 WORKDIR /app/
+
+ENV USERNAME ""
+ENV PASSWD ""
 
 COPY script.sh /
 RUN chmod +x /script.sh
